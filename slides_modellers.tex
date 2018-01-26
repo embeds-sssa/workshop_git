@@ -1,0 +1,101 @@
+%!TEX program = xelatex
+
+\documentclass[10pt]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\setmainfont{Libertinus Sans}
+\setsansfont{Libertinus Sans}
+\setmonofont{Consolas}[Scale=MatchLowercase]
+\usepackage{listings}
+
+\lstset{%
+basicstyle=\ttfamily,
+  frame=single,
+  xleftmargin=\parindent,
+}
+
+\graphicspath{{./figures/}}
+
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+
+% \usepackage{pgfplots}
+% \usepgfplotslibrary{dateplot}
+
+% \usepackage{xspace}
+% \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+% Git puns: cogitate, digital, fugitive, legitimate, longitude, prestidigitation, regurgitate
+
+\title{Git better}
+\subtitle{Collaborative project management using \emph{Git} and \emph{Github}}
+\date{\today}
+
+\author{Matteo Sostero}
+\institute{Sant'Anna School of Advanced Studies}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+
+\begin{document}
+
+\maketitle
+
+% \begin{frame}{Table of contents}
+%   \setbeamertemplate{section in toc}[sections numbered]
+%   \tableofcontents[hideallsubsections]
+% \end{frame}
+
+
+\section{A few definitions}
+
+\begin{frame}
+\frametitle{Git}
+
+\includegraphics[height=1cm]{Git-logo}
+
+Git is a distributed version control system for tracking changes in computer files and coordinating work on those files among multiple people. 
+
+\begin{description}
+\item[version control system] h
+\item[distributed] f
+\end{description}
+
+It is primarily used for source code management in software development, but it can be used to keep track of changes in any set of files.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Github}
+
+\end{frame}
+
+%% Basics: 
+% spaces (stage, index, remote)
+% interfaces
+% history
+% undoing everything
+% branching
+
+%% Workflow:
+% what (not) to include in project
+% sync with remote: push and pull
+% tag model versions, release
+% branching for features
+
+%% Style:
+% comment
+% consistent style
+% commit early and often, by milestones
+% semantic commit messages
+% never commit broken code
+
+%% Collaboration
+% forking, branching, pull request model
+% issue tracking and comment
+% project readme and collaboration guide
+
+
+\end{document}
+\begin{frame}[standout]
+Thank you!
+\end{frame}
