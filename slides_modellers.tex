@@ -1,6 +1,7 @@
 %!TEX program = xelatex
+\documentclass[10pt,svgnames]{beamer}
 
-\documentclass[10pt]{beamer}
+\PassOptionsToClass{svgnames}{xcolor}
 
 \usetheme[progressbar=frametitle]{metropolis}
 \usepackage{fontspec}
@@ -47,27 +48,81 @@ basicstyle=\ttfamily,
 % \end{frame}
 
 
-\section{A few definitions}
+\section{Version control with Git}
 
 \begin{frame}
 \frametitle{Git}
-
 \includegraphics[height=1cm]{Git-logo}
 
-Git is a distributed version control system for tracking changes in computer files and coordinating work on those files among multiple people. 
+Git is a distributed version control system for tracking changes in files and coordinating work on those files among multiple people.
 
-\begin{description}
-\item[version control system] h
-\item[distributed] f
-\end{description}
+\textbf{Version control} (Git, Mercurial, CVS, Subversion, Bitkeeper):
+\begin{itemize}
+   \item keep track of changes to a set of (text, binary) files over time locally;
+   \item easily track what changed between any two versions (text);
+   \item revert any change if needed;
+   \item back up and distribute copies of files;
+   \item collaborate on projects.
+ \end{itemize} 
 
-It is primarily used for source code management in software development, but it can be used to keep track of changes in any set of files.
+\textbf{Distributed}:
+\begin{itemize}
+  \item developers keep local copy of entire code and hsitory;
+  \item can make changes offline and asynchronously;
+  \item changes (easily) reconciled later.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Git pros}
+
+Advantages of Git:
+\begin{itemize}
+  \item widely used, supported, documented;
+  \item online platforms (\href{https://github.com/}{Github}, \href{https://bitbucket.org/}{bitbucket}, \href{https://about.gitlab.com/}{Gitlab});
+  \item dektop interfaces: shell, \href{https://desktop.github.com/}{Github Desktop}, \href{https://www.sourcetreeapp.com/}{SourceTree}, \href{https://www.gitkraken.com/}{GitKraken};
+  \item integration in editors and IDEs: Emacs, Sublime Text, RStudio, XCode, Visual Studio, \ldots;
+  \item distributed development;
+  \item easy branching: eg, experimental branches for trying changes);
+  \item makes complex merges quick.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Git cons}
+\label{git_cons}
+
+Disadvantages:
+\begin{itemize}
+  \item steep learning curve;
+  \begin{itemize}
+      \item \hyperlink{xkcd_git}{complex conceptual model};
+      \item cryptic man pages (but good documentation!).
+  \end{itemize}  
+  \item trivial handling of binary files, images, Office documents;
+\end{itemize}
+
+Required workflow changes:
+\begin{itemize}
+  \item keep project under single directory (\emph{outside} Dropbox, Google Drive, piCloud, \ldots!)
+  \item consistency in personal and team coding style (eg, indentation, spacing, line-breaking);
+  \item save and commit your changes manually and frequently;
+  \item requires to document code and explain changes.
+\end{itemize}
+
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Github}
+\end{frame}
 
+\begin{frame}
+\frametitle{Git model}
+\input{git_workflow.fig}
+Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{https://tex.stackexchange.com/a/70332/14260}
 \end{frame}
 
 %% Basics: 
@@ -96,7 +151,24 @@ It is primarily used for source code management in software development, but it 
 % project readme and collaboration guide
 
 
-\end{document}
 \begin{frame}[standout]
 Thank you!
 \end{frame}
+
+\appendix
+
+\begin{frame}
+\label{xkcd_git}
+\frametitle{XKCD on git \hfill\hyperlink{git_cons}{\beamergotobutton{back}}}
+
+\begin{center}
+\includegraphics[height=0.5\paperheight]{figures/xkcd-git.png}
+\end{center}
+
+\emph{If that doesn't fix it, git.txt contains the phone number of a friend of mine who understands git.
+Just wait through a few minutes of “It's really pretty simple, just think of branches as\ldots” and eventually you'll learn the commands that will fix everything.
+}
+
+\end{frame}
+
+\end{document}
