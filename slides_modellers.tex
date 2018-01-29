@@ -111,19 +111,36 @@ Required workflow changes:
   \item save and commit your changes manually and frequently;
   \item requires to document code and explain changes.
 \end{itemize}
-
 \end{frame}
 
+
+\section{How does it work?}
 
 \begin{frame}
-\frametitle{Github}
+\frametitle{Git concepts}
+    
+\begin{itemize}[<+->]
+\item \textbf{repository} (\textbf{repo}): a collection of files and their history
+\begin{itemize}
+   \item where the code is kept: under a single root directory;
+   \item can be \textbf{local} (your machine), or distributed across your team or on a \textbf{remote} server (eg, Github).
+ \end{itemize}
+
+\item \textbf{commit}: a snapshot of your files at a given time:
+\begin{itemize}
+  \item how Git keeps track of changes in code over time and across team;
+  \item manually \textbf{add} one or more files to include to commit them and describe what changed in a message;
+  \item a permanent record of what changed, when, with respect to what, by whom. Uniquely identified by a SHA-1 code (eg, \texttt{a12b34}).
+\end{itemize}
+
+\item \textbf{clone}: copy a remote repo on your machine;
+\item \textbf{push}: send your local changes to the remote server;
+\item \textbf{pull}: (\textbf{fetch}+\textbf{merge}): get the latest changes from the server.
+\end{itemize}
+
 \end{frame}
 
-\begin{frame}
-\frametitle{Git model}
-\input{git_workflow.fig}
-Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{https://tex.stackexchange.com/a/70332/14260}
-\end{frame}
+
 
 %% Basics: 
 % spaces (stage, index, remote)
@@ -150,6 +167,15 @@ Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{https://tex.stac
 % issue tracking and comment
 % project readme and collaboration guide
 
+\begin{frame}
+\frametitle{Github}
+\end{frame}
+
+\begin{frame}
+\frametitle{Git model}
+\input{git_workflow.fig}
+Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{https://tex.stackexchange.com/a/70332/14260}
+\end{frame}
 
 \begin{frame}[standout]
 Thank you!
