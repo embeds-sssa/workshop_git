@@ -1,19 +1,28 @@
 %!TEX program = xelatex
-\documentclass[10pt,svgnames]{beamer}
+\documentclass[10pt,svgnames,handout]{beamer}
 
 \PassOptionsToClass{svgnames}{xcolor}
 
 \usetheme[progressbar=frametitle]{metropolis}
+
+\metroset{block=fill}
+
 \usepackage{fontspec}
 \setmainfont{Linux Biolinum O}
 \setsansfont{Linux Biolinum O}
 \setmonofont{Inconsolata}[Scale=MatchLowercase]
 \usepackage{listings}
 
+
 \lstset{%
-basicstyle=\ttfamily,
-  frame=single,
-  xleftmargin=\parindent,
+  basicstyle=\ttfamily\color{mLightBrown},
+  upquote=true
+}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=,
+urlcolor=mLightGreen
 }
 
 \graphicspath{{./figures/}}
@@ -22,13 +31,8 @@ basicstyle=\ttfamily,
 
 \usepackage{booktabs}
 
-% \usepackage{pgfplots}
-% \usepgfplotslibrary{dateplot}
-
 % \usepackage{xspace}
 % \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
-
-% Git puns: cogitate, digital, fugitive, legitimate, longitude, prestidigitation, regurgitate
 
 \title{Git better}
 \subtitle{Collaborative project management using \emph{Git} and \emph{Github}}
@@ -43,8 +47,8 @@ basicstyle=\ttfamily,
 \maketitle
 
 \begin{frame}{Table of contents}
-  \setbeamertemplate{section in toc}[sections numbered]
-  \tableofcontents[hideallsubsections]
+\setbeamertemplate{section in toc}[sections numbered]
+\tableofcontents[hideallsubsections]
 \end{frame}
 
 \section{Introduction}
@@ -69,8 +73,10 @@ References:
 
 Troubleshooting:
 \begin{itemize}
-  \item How to undo (almost) anything with Git: \url{https://github.com/blog/2019-how-to-undo-almost-anything-with-git}
-  \item Git flight rules: \url{https://github.com/k88hudson/git-flight-rules/blob/master/README.md}
+  \item How to undo (almost) anything with Git:\\
+  \url{https://github.com/blog/2019-how-to-undo-almost-anything-with-git}
+  \item Git flight rules:\\
+  \url{https://github.com/k88hudson/git-flight-rules/blob/master/README.md}
 \end{itemize}
 \end{frame}
 
@@ -144,7 +150,7 @@ Required workflow changes:
 \end{frame}
 
 
-\section{How does it work? What, where and when.}
+\section{How does it work?}
 \begin{frame}
 \frametitle{Git concepts: What}
     
@@ -159,33 +165,98 @@ Required workflow changes:
 \begin{itemize}
   \item how Git keeps track of changes in code over time and across team;
   \item manually \textbf{add} one or more files to include to commit them and describe what changed in a message;
-  \item a permanent record of what changed (\textbf{diff}, when, by whom, with respect to what (\textbf{parent commit}. Commits are uniquely identified by a SHA-1 code (eg, \texttt{a12b34\ldots});
+  \item a permanent record of what changed (\textbf{diff}), when, by whom, with respect to what (\textbf{parent commit}). Commits are uniquely identified by a SHA-1 code (eg, \texttt{a12b34\ldots});
   \item a repository is just a directed acyclic graph of commits.
 \end{itemize}
-
-\item \textbf{clone}: copy a remote repo on your machine;
-\item \textbf{push}: send your local changes to the remote server;
-\item \textbf{pull}: (\textbf{fetch}+\textbf{merge}): get the latest changes from the server.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Git concepts: Where}
 
+Git has a sophisticated model of \emph{where} things happen, based on how frequently you change things:
+
 \begin{itemize}
-\item \textbf{}
+\item \textbf{Working directory} (\textbf{working tree, workspace}): the files and sub-directories you can see and work on.\\
+\emph{These are visible files stored on your disk.}
+\smallskip
+
+\item \textbf{Staging area} (\textbf{index}): where you list files that will go into your next commit.\\
+\emph{This a file in the hidden \texttt{.git/} subdirectory on your disk.}\smallskip
+
+\item \textbf{(local) Repository}: where the commits are stored; ie, it contains the full history of previous versions of the files in the repository, and relevant metadata.
+\emph{Contained in the hidden \texttt{.git/} subdirectory on your disk.}
+\smallskip
+
+\item \textbf{(remote) Repository}: a version of the repository hosted elsewhere.\\
+\emph{On another computer, or online service like GitHub or Bitbucket.}
 \end{itemize}
-
-    
-
-
 \end{frame}
 
 
+\begin{frame}
+\frametitle{Life cycle of files in a repository: from changes to staging area}
+\begin{centering}
+\includegraphics[width=\linewidth]{figures/lifecycle.png}
+\end{centering}
+\end{frame}
 
+
+\begin{frame}
+\frametitle{Key commands: repository actions}
+
+\begin{itemize}[<+->]
+\item \lstinline{git status} (or interface) tells you the state of your repository:
+\begin{itemize}
+  \item which files are \textbf{untracked} and not indexed.
+  \item which files are \textbf{modified} with respect to the index/staging area;
+  \item which files are \textbf{staged} (\textbf{indexed}) and ready to be commited;
+\end{itemize}
+\item \lstinline|git add| new or modified files to the index.
+\item \lstinline|git commit| commits changes in the index.
+\bigskip
+\item \lstinline{git diff} shows what has changed, wrt index or last commit.
+\item \lstinline{git log} shows the history of commits up to this point.
+\bigskip
+\item \lstinline|git push|: send your local changes to the remote server;
+\item \lstinline|git pull| (\lstinline{git fetch}; \lstinline{git merge}): get latest changes from remote.
+\bigskip
+\item \lstinline|git clone|: copy a remote repository on your machine;
+\item \lstinline|git init|: start a new repository in empty directory;
+\end{itemize}
+\end{frame}
+
+%TODO: animate.
+\begin{frame}
+\frametitle{Working with repositories: from changes to commits}
+\input{git_workflow.fig}\\
+Adapted from \url{https://tex.stackexchange.com/a/70332/14260}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Example workflow 1}
+
+\begin{block}{Solitary deveLlopment, offline, from scratch}
+    
+\begin{enumerate}
+  \item Create a new empty directory on your computer
+  \item \lstinline|git init|: create a git repository in the directory
+  \item create, edit, and save some \texttt{file.txt} in the directory
+  \item \lstinline|git status| shows the file is untracked
+  \item \lstinline|git add file.txt| to stage the file
+  \item \lstinline|git commit -m "First commit! added file.txt!"|
+  \item \lstinline|git status| reports no changes
+  \item edit the file again, repeat from step (4).
+\end{enumerate}
+\end{block}
+
+
+
+
+
+\end{frame}
 %% Basics: 
-% spaces (stage, index, remote)
-% interfaces
 % history
 % undoing everything
 % branching
@@ -208,13 +279,6 @@ Required workflow changes:
 % issue tracking and comment
 % project readme and collaboration guide
 
-%TODO: add git clone.
-\begin{frame}
-\frametitle{Git model}
-\input{git_workflow.fig}
-Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{https://tex.stackexchange.com/a/70332/14260}
-\end{frame}
-
 \begin{frame}[standout]
 Thank you!
 \end{frame}
@@ -225,13 +289,15 @@ Thank you!
 \label{xkcd_git}
 \frametitle{XKCD on git \hfill\hyperlink{git_cons}{\beamergotobutton{back}}}
 
-\begin{center}
-\includegraphics[height=0.5\paperheight]{figures/xkcd-git.png}
-\end{center}
+\begin{columns}[T,onlytextwidth]
+\column{0.45\textwidth}
+\includegraphics[width=0.4\textwidth]{figures/xkcd-git.png}
 
+\column{0.45\textwidth}
 \emph{If that doesn't fix it, git.txt contains the phone number of a friend of mine who understands git.
 Just wait through a few minutes of “It's really pretty simple, just think of branches as\ldots” and eventually you'll learn the commands that will fix everything.
 }
+\end{columns}
 
 \end{frame}
 
