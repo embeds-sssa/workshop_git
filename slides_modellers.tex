@@ -56,27 +56,28 @@ urlcolor=mLightGreen
 \begin{frame}
 \frametitle{Let's Git it done!}
     
-These slides are a brief primer to Git, and how it can help your workflow.\medskip
+These slides are a brief primer to Git, and how it can help your workflow.
 
-\centerline{These slides: \url{bit.ly/}}
-\medskip
+\bigskip
+
+\centerline{Find these slides at: \url{bit.ly/}}
+
+\bigskip
 \pause
 
 References:
 \begin{itemize}
-  \item Atlassian tutorial: \url{https://www.atlassian.com/git/tutorials}
-  \item Github guides: \url{https://guides.github.com/}
-  \item Git cheatsheet: \url{http://ndpsoftware.com/git-cheatsheet.html}
-  \item Git book: \url{https://git-scm.com/book/en/v2}
+  \item \href{https://www.atlassian.com/git/tutorials}{Atlassian tutorial}
+  \item \href{https://guides.github.com/}{Github guides}
+  \item \href{http://ndpsoftware.com/git-cheatsheet.html}{Git cheatsheet}
+  \item \href{https://git-scm.com/book/en/v2}{Git book}
 \end{itemize}
 \medskip
 
 Troubleshooting:
 \begin{itemize}
-  \item How to undo (almost) anything with Git:\\
-  \url{https://github.com/blog/2019-how-to-undo-almost-anything-with-git}
-  \item Git flight rules:\\
-  \url{https://github.com/k88hudson/git-flight-rules/blob/master/README.md}
+  \item \href{https://github.com/blog/2019-how-to-undo-almost-anything-with-git}{How to undo (almost) anything with Git}
+  \item \href{https://github.com/k88hudson/git-flight-rules/blob/master/README.md}{Git flight rules}
 \end{itemize}
 \end{frame}
 
@@ -101,7 +102,7 @@ Git is a distributed version control system for tracking changes in files and co
 
 \textbf{Distributed}:
 \begin{itemize}
-  \item developers keep local copy of entire code and hsitory;
+  \item developers keep local copy of entire code and history;
   \item can make changes offline and asynchronously;
   \item changes (easily) reconciled later.
 \end{itemize}
@@ -114,7 +115,7 @@ Git is a distributed version control system for tracking changes in files and co
 Advantages of Git:
 \begin{itemize}
   \item widely used, supported, documented;
-  \item online platforms (\href{https://github.com/}{Github}, \href{https://bitbucket.org/}{bitbucket}, \href{https://about.gitlab.com/}{Gitlab});
+  \item online platforms: \href{https://github.com/}{Github}, \href{https://bitbucket.org/}{bitbucket}, \href{https://about.gitlab.com/}{Gitlab};
   \item dektop interfaces: shell, \href{https://desktop.github.com/}{Github Desktop}, \href{https://www.sourcetreeapp.com/}{SourceTree}, \href{https://www.gitkraken.com/}{GitKraken};
   \item integration in editors and IDEs: Emacs, Sublime Text, RStudio, XCode, Visual Studio, \ldots;
   \item distributed development;
@@ -131,16 +132,14 @@ Advantages of Git:
 Disadvantages:
 \begin{itemize}
   \item steep learning curve;
-  \begin{itemize}
-      \item \hyperlink{xkcd_git}{complex conceptual model};
-      \item cryptic man pages (but good documentation!).
-  \end{itemize}  
+  \item \hyperlink{xkcd_git}{complex conceptual model};
+  \item cryptic man pages (but good documentation!).
   \item trivial handling of binary files, images, Office documents;
 \end{itemize}
 
 \medskip
 
-Required workflow changes:
+Requires some workflow changes (\hypertarget{style}{see details}):
 \begin{itemize}
   \item keep project under single directory (\emph{outside} Dropbox, Google Drive, piCloud, \ldots!)
   \item consistency in personal and team coding style (eg, indentation, spacing, line-breaking);
@@ -150,7 +149,7 @@ Required workflow changes:
 \end{frame}
 
 
-\section{How does it work?}
+\section{Essential concepts}
 \begin{frame}
 \frametitle{Git concepts: What}
     
@@ -184,7 +183,7 @@ Git has a sophisticated model of \emph{where} things happen, based on how freque
 \item \textbf{Staging area} (\textbf{index}): where you list files that will go into your next commit.\\
 \emph{This a file in the hidden \texttt{.git/} subdirectory on your disk.}\smallskip
 
-\item \textbf{(local) Repository}: where the commits are stored; ie, it contains the full history of previous versions of the files in the repository, and relevant metadata.
+\item \textbf{(local) Repository}: where the commits are stored; ie, it contains the full history of previous versions of the files in the repository, and relevant metadata.\\
 \emph{Contained in the hidden \texttt{.git/} subdirectory on your disk.}
 \smallskip
 
@@ -226,18 +225,11 @@ Git has a sophisticated model of \emph{where} things happen, based on how freque
 \end{itemize}
 \end{frame}
 
-%TODO: animate.
-\begin{frame}
-\frametitle{Working with repositories: from changes to commits}
-\input{git_workflow.fig}\\
-Adapted from \url{https://tex.stackexchange.com/a/70332/14260}
-\end{frame}
-
 
 \begin{frame}
 \frametitle{Example workflow 1}
 
-\begin{block}{Solitary deveLlopment, offline, from scratch}
+\begin{block}{Solitary development, offline, from scratch}
     
 \begin{enumerate}
   \item Create a new empty directory on your computer
@@ -250,34 +242,77 @@ Adapted from \url{https://tex.stackexchange.com/a/70332/14260}
   \item edit the file again, repeat from step (4).
 \end{enumerate}
 \end{block}
-
-
-
-
-
 \end{frame}
+
+%TODO: animate.
+\begin{frame}
+\frametitle{Working with repositories: from changes to commits}
+\input{git_workflow.fig}\\
+Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{Stackoverflow}.
+\end{frame}
+
+
+
+
+
+\section{Branching and history}
+
 %% Basics: 
 % history
-% undoing everything
 % branching
-
-%% Workflow:
-% what (not) to include in project
-% sync with remote: push and pull
 % tag model versions, release
+
+% Workflow:
 % branching for features
 
-%% Style:
-% comment
-% consistent style
-% commit early and often, by milestones
-% semantic commit messages
-% never commit broken code
-
 %% Collaboration
+
+
+\section{Collaborative development}
 % forking, branching, pull request model
 % issue tracking and comment
 % project readme and collaboration guide
+
+
+\section{Undoing anything}
+
+
+\label{Style}
+
+\begin{frame}
+\label{style}
+\frametitle{Git with style}
+
+Some matters of style and workflow to work and collaborate with ease.
+
+\begin{itemize}[<+->]
+\item keep project under \textbf{single directory} (\alert{outside} Dropbox, Google Drive, piCloud, \ldots!)
+\item \textbf{focus on code}
+\begin{itemize}
+  \item include \textbf{all} relevant files in the repo;
+  \item exclude unnecessary files (eg, compilation artifacts, large data, useless binary files) using \texttt{.gitignore} (see \href{https://github.com/github/gitignore}{github.com/github/gitignore}).
+\end{itemize}
+\item be \textbf{consistent} in personal and team coding style: indentation/tabs, spacing, character encoding (UTF-8), line-breaking.
+\item conform to a \textbf{style guide} (eg, \href{https://google.github.io/styleguide/}{google.github.io/styleguide/});
+\item \textbf{commit early and often};
+\item \textbf{never commit broken code}! use \href{https://git-scm.com/book/it/v2/Git-Tools-Stashing-and-Cleaning}{\lstinline{git stash}} to save it instead.
+\item commit related files together;
+\item write meaningful commit messages.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: A LaTeX repo}
+
+
+\end{frame}
+
+
+
+
+
+
 
 \begin{frame}[standout]
 Thank you!
@@ -289,11 +324,12 @@ Thank you!
 \label{xkcd_git}
 \frametitle{XKCD on git \hfill\hyperlink{git_cons}{\beamergotobutton{back}}}
 
-\begin{columns}[T,onlytextwidth]
+\begin{columns}[B,onlytextwidth]
 \column{0.45\textwidth}
-\includegraphics[width=0.4\textwidth]{figures/xkcd-git.png}
+\includegraphics[width=\textwidth]{figures/xkcd-git.png}
 
 \column{0.45\textwidth}
+\vfill
 \emph{If that doesn't fix it, git.txt contains the phone number of a friend of mine who understands git.
 Just wait through a few minutes of “It's really pretty simple, just think of branches as\ldots” and eventually you'll learn the commands that will fix everything.
 }
