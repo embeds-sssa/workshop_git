@@ -42,10 +42,38 @@ basicstyle=\ttfamily,
 
 \maketitle
 
-% \begin{frame}{Table of contents}
-%   \setbeamertemplate{section in toc}[sections numbered]
-%   \tableofcontents[hideallsubsections]
-% \end{frame}
+\begin{frame}{Table of contents}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+\frametitle{Let's Git it done!}
+    
+These slides are a brief primer to Git, and how it can help your workflow.\medskip
+
+\centerline{These slides: \url{bit.ly/}}
+\medskip
+\pause
+
+References:
+\begin{itemize}
+  \item Atlassian tutorial: \url{https://www.atlassian.com/git/tutorials}
+  \item Github guides: \url{https://guides.github.com/}
+  \item Git cheatsheet: \url{http://ndpsoftware.com/git-cheatsheet.html}
+  \item Git book: \url{https://git-scm.com/book/en/v2}
+\end{itemize}
+\medskip
+
+Troubleshooting:
+\begin{itemize}
+  \item How to undo (almost) anything with Git: \url{https://github.com/blog/2019-how-to-undo-almost-anything-with-git}
+  \item Git flight rules: \url{https://github.com/k88hudson/git-flight-rules/blob/master/README.md}
+\end{itemize}
+\end{frame}
+
 
 
 \section{Version control with Git}
@@ -91,7 +119,7 @@ Advantages of Git:
 
 
 \begin{frame}
-\frametitle{Git cons}
+\frametitle{Let's Git on the same page}
 \label{git_cons}
 
 Disadvantages:
@@ -104,6 +132,8 @@ Disadvantages:
   \item trivial handling of binary files, images, Office documents;
 \end{itemize}
 
+\medskip
+
 Required workflow changes:
 \begin{itemize}
   \item keep project under single directory (\emph{outside} Dropbox, Google Drive, piCloud, \ldots!)
@@ -114,10 +144,9 @@ Required workflow changes:
 \end{frame}
 
 
-\section{How does it work?}
-
+\section{How does it work? What, where and when.}
 \begin{frame}
-\frametitle{Git concepts}
+\frametitle{Git concepts: What}
     
 \begin{itemize}[<+->]
 \item \textbf{repository} (\textbf{repo}): a collection of files and their history
@@ -130,13 +159,25 @@ Required workflow changes:
 \begin{itemize}
   \item how Git keeps track of changes in code over time and across team;
   \item manually \textbf{add} one or more files to include to commit them and describe what changed in a message;
-  \item a permanent record of what changed, when, with respect to what, by whom. Uniquely identified by a SHA-1 code (eg, \texttt{a12b34}).
+  \item a permanent record of what changed (\textbf{diff}, when, by whom, with respect to what (\textbf{parent commit}. Commits are uniquely identified by a SHA-1 code (eg, \texttt{a12b34\ldots});
+  \item a repository is just a directed acyclic graph of commits.
 \end{itemize}
 
 \item \textbf{clone}: copy a remote repo on your machine;
 \item \textbf{push}: send your local changes to the remote server;
 \item \textbf{pull}: (\textbf{fetch}+\textbf{merge}): get the latest changes from the server.
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Git concepts: Where}
+
+\begin{itemize}
+\item \textbf{}
+\end{itemize}
+
+    
+
 
 \end{frame}
 
@@ -167,10 +208,7 @@ Required workflow changes:
 % issue tracking and comment
 % project readme and collaboration guide
 
-\begin{frame}
-\frametitle{Github}
-\end{frame}
-
+%TODO: add git clone.
 \begin{frame}
 \frametitle{Git model}
 \input{git_workflow.fig}
