@@ -1,5 +1,5 @@
 %!TEX program = xelatex
-\documentclass[10pt,svgnames,handout]{beamer}
+\documentclass[10pt,svgnames]{beamer}
 
 \PassOptionsToClass{svgnames}{xcolor}
 
@@ -44,7 +44,7 @@ urlcolor=mLightGreen
 
 \author{Matteo Sostero}
 \institute{Sant'Anna School of Advanced Studies}
-\date{\today\\ These slides: \url{http://bit.ly/SA_git}}
+\date{\today\\ These slides: \url{https://bit.ly/SA_git}}
 % \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
 
 \begin{document}
@@ -58,7 +58,7 @@ These slides are a brief primer to Git, and how it can help your workflow.
 
 \bigskip
 
-\centerline{Find these slides at: \url{http://bit.ly/SA_git}}
+\centerline{Find these slides at: \url{https://bit.ly/SA_git}}
 
 \bigskip
 \pause
@@ -92,16 +92,18 @@ Troubleshooting:
 \includegraphics[height=1cm]{Git-logo}
 
 Git is a distributed version control system for tracking changes in files and coordinating work on those files among multiple people.
+\smallskip
+\pause
 
 \textbf{Version control} (Git, Mercurial, CVS, Subversion, Bitkeeper):
 \begin{itemize}
-   \item keep track of changes to a set of (text, binary) files line-byl-line over time locally;
+   \item keep track of changes to text files line-by-line over time;
    \item easily track what changed between any two versions (text);
    \item revert any change if needed;
    \item back up and distribute copies of files;
    \item collaborate on projects.
  \end{itemize} 
-
+\pause
 \textbf{Distributed}:
 \begin{itemize}
   \item developers keep local copy of entire code and history;
@@ -140,6 +142,7 @@ Challenges:
 \end{itemize}
 
 \medskip
+\pause 
 
 Requires some workflow changes (\hypertarget{style}{see details}):
 \begin{itemize}
@@ -410,7 +413,7 @@ From the \lstinline{Master} branch, \lstinline{git merge feature master} creates
 \begin{frame}
 \frametitle{Collaborating on remote git repositories (GitHub, Bitbucket,\ldots)}
 Online hosting services like GitHub and Bitbucket provide:
-\begin{itemize}
+\begin{itemize}[<+->]
   \item \textbf{remote repository} to back up code;
   \item \textbf{issue tracking} interface: reporting bugs, suggesting improvements;
   \item \textbf{project and team management}: decide who can do what;
@@ -491,7 +494,7 @@ cloud       & \emph{Education}  & free for education, (max 10 repos)            
 cloud       & \emph{Team}       & from \$25/month (5 users) + \$9/user/month               \\
 cloud       & \emph{Business}   & \$21 per user/month                                      \\
 \midrule
-self-hosted & \emph{Enterprise} & \$21 per user/month (packs of 10 users, billed annually) \\
+self-hosted & \emph{Enterprise} & \$21 per user/month (by $\times$10 users, annual) \\
 \bottomrule
 \end{tabular}
 
