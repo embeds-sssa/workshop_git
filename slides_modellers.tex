@@ -33,6 +33,7 @@ urlcolor=mLightGreen
 \usepackage{appendixnumberbeamer}
 
 \usepackage{booktabs}
+\usepackage{multirow}
 
 % \usepackage{xspace}
 % \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
@@ -96,7 +97,7 @@ Git is a distributed version control system for tracking changes in files and co
 
 \textbf{Version control} (Git, Mercurial, CVS, Subversion, Bitkeeper):
 \begin{itemize}
-   \item keep track of changes to a set of (text, binary) files over time locally;
+   \item keep track of changes to a set of (text, binary) files line-byl-line over time locally;
    \item easily track what changed between any two versions (text);
    \item revert any change if needed;
    \item back up and distribute copies of files;
@@ -293,27 +294,157 @@ Note:
   \item There is always a \lstinline{Master} branch, containing the \emph{main}, \emph{baseline} version of the code.
   \item Git makes creating and merging branches quick and easy: it's a great help to the worflow.
   \item Other branches can be created from any commit to \emph{experiment}, \emph{implement new features}, \emph{keep diverging versions}.
-
 \end{itemize}
 \pause
+
+\begin{block}{Example history with branches}
 \input{./figures/history_branch.fig}
+\end{block}
 
 \end{frame}
 
 
-% Workflow:
-% branching for features
+\begin{frame}
+\frametitle{Moving across branches with \lstinline{git checkout}}
 
-%% Collaboration
+\lstinline{git checkout} moves \lstinline{HEAD} on the tree (different branch or earlier commit on the same branch): it shows the files at  different commit.\\
+\medskip
+\pause
 
+\begin{block}{Example switching branches}
+\begin{tikzpicture}[scale=0.9]
+% Commit DAG
+\gitDAG[grow right sep = 2em]{
+  A -- B -- { 
+    C,
+    D -- E,
+  }
+};
+
+% Master branch
+\gitbranch{master}{right=of C}{C}
+
+% Feature branch
+\gitbranch{feature}{right=of E}{E}
+
+% HEAD reference
+\gitHEAD{right=of feature}{feature}
+\end{tikzpicture}
+
+\pause
+\lstinline{git checkout master}
+\pause
+
+\begin{tikzpicture}[scale =0.9]
+% Commit DAG
+\gitDAG[grow right sep = 2em]{
+  A -- B -- { 
+    C,
+    D -- E,
+  }
+};
+% Master branch
+\gitbranch{master}{right=of C}{C}
+% Feature branch
+\gitbranch{feature}{right=of E}{E}
+% HEAD reference
+\gitHEAD{right=of master}{master}
+\end{tikzpicture}
+
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Merging branches with \lstinline{git merge}}
+
+\begin{block}{Merging branches}
+\lstinline{git checkout master}
+
+\begin{tikzpicture}[scale =0.9]
+% Commit DAG
+\gitDAG[grow right sep = 2em]{
+  A -- B -- { 
+    C,
+    D -- E,
+  }
+};
+
+% Master branch
+\gitbranch{master}{right=of C}{C}
+% Feature branch
+\gitbranch{feature}{right=of E}{E}
+% HEAD reference
+\gitHEAD{right=of master}{master}
+\end{tikzpicture}
+
+\medskip
+\pause
+\lstinline{git merge feature master}
+
+\begin{tikzpicture}[scale=0.9]
+% Commit DAG
+\gitDAG[grow right sep = 2em]{
+  A -- B -- { 
+    C -- F[xshift=10mm],
+    D -- E -- F[xshift=10mm],
+  }
+};
+% Master branch
+\gitbranch{master}{right=of F}{F}
+% Feature branch
+\gitbranch{feature}{right=of E}{E}
+% HEAD reference
+\gitHEAD{right=of master}{master}
+\end{tikzpicture}
+
+
+\end{block}
+\end{frame}
+
+% \section{Undoing anything}
 
 \section{Collaborative development}
-% forking, branching, pull request model
-% issue tracking and comment
-% project readme and collaboration guide
 
+\begin{frame}
+\frametitle{Collaborating on remote git repositories (GitHub, Bitbucket,\ldots)}
+Online hosting services like GitHub and Bitbucket provide:
+\begin{itemize}
+  \item \textbf{remote repository} to back up code;
+  \item \textbf{issue tracking} interface: reporting bugs, suggesting improvements;
+  \item \textbf{project and team management}: decide who can do what;
+  \item managing contributions (\textbf{pull requests}) from team members and third parties;
+  \item place to \textbf{host documentation} and \textbf{share know-how} on the code;
+  \item venue to \textbf{make code public} and \textbf{invite collaboration} from anyone.
+\end{itemize}
+\pause
 
-\section{Undoing anything}
+\begin{center}
+\includegraphics[width=0.5\linewidth]{github_poster.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Collaboration workflow on remote git repositories}
+The typical workflow within our Github \emph{organization} or Bitbucket \emph{team} would be:
+\begin{enumerate}[<+->]
+  \item Create a (private/public) repository within the organization.
+  \begin{itemize}
+    \item Invite collaborators among modelers;
+    \item Nominate administrators, maintainers, access rights, etc.
+  \end{itemize}
+  \item Upload (or migrate) existing code on the repository;
+  \item Other modelers clone repository on their machine, replicate and experiment;
+  \item Document existing code; add a \texttt{README.md} explaining what the model does, reference to papers, how to collaborate;
+  \item Document issues, suggest improvements;
+  \item Create branches for developing new versions (implementing features, fixing bugs,\ldots)
+  \item Merge branches in \texttt{Master} to integrate in the reference (development) version.
+  \item Tag specific commits to refer to milestones of the project (published versions)
+\end{enumerate}
+
+\end{frame}
+
 
 
 \section{Style}
@@ -343,18 +474,48 @@ Some matters of style and workflow to collaborate with ease.
 
 \end{frame}
 
+
 \begin{frame}
-\frametitle{Example: A LaTeX repo}
+\frametitle{Organization pricing plans}
 
+Git is free software, but extensive access to the cloud platform (GitHub, Bitbucket,\ldots) is paying for non-open-source projects.
 
+\small
+
+\begin{tabular}{lll}
+\multicolumn{3}{c}{\textbf{GitHub}}\\
+\toprule
+Hosting     & Plan              & Fee                                                               \\
+\midrule
+cloud & \emph{Education}  & free for accredited education, (max 10 repos)                     \\
+cloud & \emph{Team}       & starting at  \$25/month (5 users) + \$9 per user/month            \\
+cloud & \emph{Business}   & \$21 per user/month                                               \\
+\midrule
+self-hosted & \emph{Enterprise} & Business \$21 per user/month (packs of 10 users, billed annually) \\
+\bottomrule
+\end{tabular}
+
+\medskip
+
+\begin{tabular}{lll}
+\multicolumn{3}{c}{\textbf{Bitbucket}}\\
+\toprule
+Hosting     & Plan                   &  Fee                             \\
+\midrule
+cloud       & \emph{Standard}        &  \$10/month + \$2 per user/month \\
+cloud       & \emph{Premium}         &  \$25/month + \$5 user/month     \\
+cloud       &                        &  \$1800/year (25 users)          \\
+\midrule
+self-hosted &                        & \$3300/year (50 users) \\
+\bottomrule
+\end{tabular}
 \end{frame}
-
-
 
 
 \begin{frame}[standout]
 Thank you!
 \end{frame}
+
 
 \appendix
 

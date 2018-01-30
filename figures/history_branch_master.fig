@@ -29,6 +29,7 @@
 
 % HEAD reference
 \gitHEAD
-  {right=of feature} % node placement
-  {feature}          % target
+  {right=of master} % node placement
+  {master}          % target
+
 \end{tikzpicture}
