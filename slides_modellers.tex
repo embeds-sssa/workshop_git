@@ -44,18 +44,12 @@ urlcolor=mLightGreen
 
 \author{Matteo Sostero}
 \institute{Sant'Anna School of Advanced Studies}
+\date{\today\\ These slides: \url{http://bit.ly/SA_git}}
 % \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
 
 \begin{document}
 
 \maketitle
-
-\begin{frame}{Table of contents}
-\setbeamertemplate{section in toc}[sections numbered]
-\tableofcontents[hideallsubsections]
-\end{frame}
-
-\section{Introduction}
 
 \begin{frame}
 \frametitle{Let's Git it done!}
@@ -64,7 +58,7 @@ These slides are a brief primer to Git, and how it can help your workflow.
 
 \bigskip
 
-\centerline{Find these slides at: \url{bit.ly/}}
+\centerline{Find these slides at: \url{http://bit.ly/SA_git}}
 
 \bigskip
 \pause
@@ -85,6 +79,10 @@ Troubleshooting:
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Table of contents}
+\setbeamertemplate{section in toc}[sections numbered]
+\tableofcontents[hideallsubsections]
+\end{frame}
 
 
 \section{Version control with Git}
@@ -359,6 +357,8 @@ Note:
 \begin{frame}
 \frametitle{Merging branches with \lstinline{git merge}}
 
+From the \lstinline{Master} branch, \lstinline{git merge feature master} creates a new commit combining the two branches.
+
 \begin{block}{Merging branches}
 \lstinline{git checkout master}
 
@@ -429,18 +429,18 @@ Online hosting services like GitHub and Bitbucket provide:
 \frametitle{Collaboration workflow on remote git repositories}
 The typical workflow within our Github \emph{organization} or Bitbucket \emph{team} would be:
 \begin{enumerate}[<+->]
-  \item Create a (private/public) repository within the organization.
+  \item create a (private/public) repository within the organization.
   \begin{itemize}
     \item Invite collaborators among modelers;
     \item Nominate administrators, maintainers, access rights, etc.
   \end{itemize}
-  \item Upload (or migrate) existing code on the repository;
-  \item Other modelers clone repository on their machine, replicate and experiment;
-  \item Document existing code; add a \texttt{README.md} explaining what the model does, reference to papers, how to collaborate;
-  \item Document issues, suggest improvements;
-  \item Create branches for developing new versions (implementing features, fixing bugs,\ldots)
-  \item Merge branches in \texttt{Master} to integrate in the reference (development) version.
-  \item Tag specific commits to refer to milestones of the project (published versions)
+  \item upload (or migrate) existing code on the repository;
+  \item other modelers clone repository on their machine, replicate and experiment;
+  \item document existing code; add a \texttt{README.md} explaining what the model does, reference to papers, how to collaborate;
+  \item document issues, suggest improvements;
+  \item create branches for developing new versions (features, bugfix,\ldots)
+  \item merge branches in \texttt{Master} to integrate in the development version.
+  \item tag specific commits to refer to milestones of the project.
 \end{enumerate}
 
 \end{frame}
@@ -464,7 +464,7 @@ Some matters of style and workflow to collaborate with ease.
   \item keep it \textbf{outside} shared folders of Dropbox, Google Drive, piCloud!
 \end{itemize}
 \item be \textbf{consistent} in personal and team coding style: indentation/tabs, spacing, character encoding (UTF-8), line-breaking.
-\item conform to a \textbf{style guide} for your language (eg, \href{https://google.github.io/styleguide/}{google.github.io/styleguide/});
+\item conform to a language \textbf{style guide} (eg, \href{https://google.github.io/styleguide/}{google.github.io/styleguide/});
 \item \textbf{commit early and often};
 \item \textbf{never commit broken code}! use \href{https://git-scm.com/book/it/v2/Git-Tools-Stashing-and-Cleaning}{\lstinline{git stash}} to save it instead.
 \item commit related files together;
@@ -475,6 +475,8 @@ Some matters of style and workflow to collaborate with ease.
 \end{frame}
 
 
+\section{Pricing plans}
+
 \begin{frame}
 \frametitle{Organization pricing plans}
 
@@ -482,31 +484,27 @@ Git is free software, but extensive access to the cloud platform (GitHub, Bitbuc
 
 \small
 
-\begin{tabular}{lll}
-\multicolumn{3}{c}{\textbf{GitHub}}\\
+\begin{tabular}{llp{6cm}}
+\multicolumn{3}{l}{\textbf{GitHub}}\\
 \toprule
-Hosting     & Plan              & Fee                                                               \\
+cloud       & \emph{Education}  & free for education, (max 10 repos)                       \\
+cloud       & \emph{Team}       & from \$25/month (5 users) + \$9/user/month               \\
+cloud       & \emph{Business}   & \$21 per user/month                                      \\
 \midrule
-cloud & \emph{Education}  & free for accredited education, (max 10 repos)                     \\
-cloud & \emph{Team}       & starting at  \$25/month (5 users) + \$9 per user/month            \\
-cloud & \emph{Business}   & \$21 per user/month                                               \\
-\midrule
-self-hosted & \emph{Enterprise} & Business \$21 per user/month (packs of 10 users, billed annually) \\
+self-hosted & \emph{Enterprise} & \$21 per user/month (packs of 10 users, billed annually) \\
 \bottomrule
 \end{tabular}
 
 \medskip
 
 \begin{tabular}{lll}
-\multicolumn{3}{c}{\textbf{Bitbucket}}\\
+\multicolumn{3}{l}{\textbf{Bitbucket}}\\
 \toprule
-Hosting     & Plan                   &  Fee                             \\
+cloud       & \emph{Standard} & \$10/month + \$2 per user/month \\
+cloud       & \emph{Premium}  & \$25/month + \$5 user/month     \\
 \midrule
-cloud       & \emph{Standard}        &  \$10/month + \$2 per user/month \\
-cloud       & \emph{Premium}         &  \$25/month + \$5 user/month     \\
-cloud       &                        &  \$1800/year (25 users)          \\
-\midrule
-self-hosted &                        & \$3300/year (50 users) \\
+self-hosted &                 & \$1800/year (25 users)          \\
+self-hosted &                 & \$3300/year (50 users)          \\
 \bottomrule
 \end{tabular}
 \end{frame}
@@ -519,7 +517,7 @@ Thank you!
 
 \appendix
 
-\begin{frame}
+\begin{frame}<handout:0>
 \label{xkcd_git}
 \frametitle{XKCD on git \hfill\hyperlink{git_cons}{\beamergotobutton{back}}}
 
@@ -533,7 +531,5 @@ Thank you!
 Just wait through a few minutes of “It's really pretty simple, just think of branches as\ldots” and eventually you'll learn the commands that will fix everything.
 }
 \end{columns}
-
 \end{frame}
-
 \end{document}
