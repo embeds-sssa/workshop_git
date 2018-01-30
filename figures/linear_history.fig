@@ -1,0 +1,23 @@
+\newcommand\commit[5]{\node[commit] (#1) {}; \node[clabel] at (#1) {\ttfamily #1 \textcolor{mLightBrown}{#2} - #3 \textcolor{mLightGreen}{(#4)} \textcolor{gray!60}{<#5>}};}
+\newcommand\ghost[1]{\coordinate (#1);}
+\newcommand\connect[2]{\path (#1) to[out=90,in=-90] (#2);}
+
+\begin{adjustbox}{max width=\textwidth}
+\begin{tikzpicture}
+\tikzstyle{commit}=[draw,circle,fill=white,inner sep=0pt,minimum size=5pt]
+\tikzstyle{clabel}=[right,outer sep=1em]
+\tikzstyle{every path}=[draw]
+\matrix [column sep={1em,between origins},row sep=\lineskip]
+{
+\commit{d764b48}{HEAD -> Master}{Polished model for release}{1 hour ago}{Matteo} \\
+\commit{54ba4b2}{}{Fixed bug on credit constraint}{4 hours ago}{Matteo} \\
+\commit{c589395}{}{Improved consumer module}{1 day ago}{Matteo} \\
+\commit{b3bd158}{}{Added model files}{2 days ago}{Matteo} \\
+\commit{63268c1}{}{Initial commit}{4 days ago}{Matteo}  \\
+};
+\connect{63268c1}{b3bd158};
+\connect{b3bd158}{c589395};
+\connect{c589395}{54ba4b2};
+\connect{54ba4b2}{d764b48};
+\end{tikzpicture}
+\end{adjustbox}

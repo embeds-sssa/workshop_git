@@ -7,6 +7,8 @@
 
 \metroset{block=fill}
 
+\usepackage{adjustbox}
+
 \usepackage{fontspec}
 \setmainfont{Linux Biolinum O}
 \setsansfont{Linux Biolinum O}
@@ -118,9 +120,9 @@ Advantages of Git:
   \item online platforms: \href{https://github.com/}{Github}, \href{https://bitbucket.org/}{bitbucket}, \href{https://about.gitlab.com/}{Gitlab};
   \item dektop interfaces: shell, \href{https://desktop.github.com/}{Github Desktop}, \href{https://www.sourcetreeapp.com/}{SourceTree}, \href{https://www.gitkraken.com/}{GitKraken};
   \item integration in editors and IDEs: Emacs, Sublime Text, RStudio, XCode, Visual Studio, \ldots;
-  \item distributed development;
+  \item distributed (asynchronous, offline) development;
   \item easy branching: eg, experimental branches for trying changes);
-  \item makes complex merges quick.
+  \item easily make complex merges.
 \end{itemize}
 \end{frame}
 
@@ -129,7 +131,7 @@ Advantages of Git:
 \frametitle{Let's Git on the same page}
 \label{git_cons}
 
-Disadvantages:
+Challenges:
 \begin{itemize}
   \item steep learning curve;
   \item \hyperlink{xkcd_git}{complex conceptual model};
@@ -143,7 +145,7 @@ Requires some workflow changes (\hypertarget{style}{see details}):
 \begin{itemize}
   \item keep project under single directory (\emph{outside} Dropbox, Google Drive, piCloud, \ldots!)
   \item consistency in personal and team coding style (eg, indentation, spacing, line-breaking);
-  \item save and commit your changes manually and frequently;
+  \item save and commit changes manually and frequently;
   \item requires to document code and explain changes.
 \end{itemize}
 \end{frame}
@@ -154,7 +156,7 @@ Requires some workflow changes (\hypertarget{style}{see details}):
 \frametitle{Git concepts: What}
     
 \begin{itemize}[<+->]
-\item \textbf{repository} (\textbf{repo}): a collection of files and their history
+\item \textbf{repository} (\textbf{repo}): a collection of files and their history:
 \begin{itemize}
    \item where the code is kept: under a single root directory;
    \item can be \textbf{local} (your machine), or distributed across your team or on a \textbf{remote} server (eg, Github).
@@ -165,7 +167,7 @@ Requires some workflow changes (\hypertarget{style}{see details}):
   \item how Git keeps track of changes in code over time and across team;
   \item manually \textbf{add} one or more files to include to commit them and describe what changed in a message;
   \item a permanent record of what changed (\textbf{diff}), when, by whom, with respect to what (\textbf{parent commit}). Commits are uniquely identified by a SHA-1 code (eg, \texttt{a12b34\ldots});
-  \item a repository is just a directed acyclic graph of commits.
+  \item a repository is “just a directed acyclic graph of commits”.
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -181,7 +183,7 @@ Git has a sophisticated model of \emph{where} things happen, based on how freque
 \smallskip
 
 \item \textbf{Staging area} (\textbf{index}): where you list files that will go into your next commit.\\
-\emph{This a file in the hidden \texttt{.git/} subdirectory on your disk.}\smallskip
+\emph{This is a file in the hidden \texttt{.git/} subdirectory on your disk.}\smallskip
 
 \item \textbf{(local) Repository}: where the commits are stored; ie, it contains the full history of previous versions of the files in the repository, and relevant metadata.\\
 \emph{Contained in the hidden \texttt{.git/} subdirectory on your disk.}
@@ -247,18 +249,26 @@ Git has a sophisticated model of \emph{where} things happen, based on how freque
 %TODO: animate.
 \begin{frame}
 \frametitle{Working with repositories: from changes to commits}
-\input{git_workflow.fig}\\
-Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{Stackoverflow}.
+\input{./figures/git_workflow.fig}\\
+\begin{small}
+Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{Stackoverflow}. See also \href{http://ndpsoftware.com/git-cheatsheet.html}{ndpsoftware.com/git-cheatsheet.html}
+\end{small}
+
 \end{frame}
 
 
 
+\section{History and branching}
 
+\begin{frame}
+\frametitle{History of the repo with \lstinline{git log}}
 
-\section{Branching and history}
+\input{./figures/linear_history.fig}
+
+\end{frame}
+
 
 %% Basics: 
-% history
 % branching
 % tag model versions, release
 
@@ -277,27 +287,29 @@ Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{Stackoverflow}.
 \section{Undoing anything}
 
 
-\label{Style}
+\section{Style}
 
 \begin{frame}
 \label{style}
 \frametitle{Git with style}
 
-Some matters of style and workflow to work and collaborate with ease.
+Some matters of style and workflow to collaborate with ease.
 
 \begin{itemize}[<+->]
-\item keep project under \textbf{single directory} (\alert{outside} Dropbox, Google Drive, piCloud, \ldots!)
-\item \textbf{focus on code}
+\item repository as self-contained, dedicated directory of (mostly) code:
 \begin{itemize}
-  \item include \textbf{all} relevant files in the repo;
+  \item include \textbf{all} relevant files in the repo (libraries, dependencies, \ldots);
+  \item in your code, refer to dependencies using relative paths: \lstinline{./library/}, \textbf{not} \lstinline{/home/user/project_name/library};
   \item exclude unnecessary files (eg, compilation artifacts, large data, useless binary files) using \texttt{.gitignore} (see \href{https://github.com/github/gitignore}{github.com/github/gitignore}).
+  \item keep it \textbf{outside} shared folders of Dropbox, Google Drive, piCloud!
 \end{itemize}
 \item be \textbf{consistent} in personal and team coding style: indentation/tabs, spacing, character encoding (UTF-8), line-breaking.
-\item conform to a \textbf{style guide} (eg, \href{https://google.github.io/styleguide/}{google.github.io/styleguide/});
+\item conform to a \textbf{style guide} for your language (eg, \href{https://google.github.io/styleguide/}{google.github.io/styleguide/});
 \item \textbf{commit early and often};
 \item \textbf{never commit broken code}! use \href{https://git-scm.com/book/it/v2/Git-Tools-Stashing-and-Cleaning}{\lstinline{git stash}} to save it instead.
 \item commit related files together;
 \item write meaningful commit messages.
+\item tag release (baseline, published) versions of your code with \lstinline{git tag}.
 \end{itemize}
 
 \end{frame}
@@ -307,9 +319,6 @@ Some matters of style and workflow to work and collaborate with ease.
 
 
 \end{frame}
-
-
-
 
 
 
