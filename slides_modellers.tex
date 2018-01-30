@@ -15,6 +15,7 @@
 \setmonofont{Inconsolata}[Scale=MatchLowercase]
 \usepackage{listings}
 
+\usepackage{gitdags}
 
 \lstset{%
   basicstyle=\ttfamily\color{mLightBrown},
@@ -166,7 +167,7 @@ Requires some workflow changes (\hypertarget{style}{see details}):
 \begin{itemize}
   \item how Git keeps track of changes in code over time and across team;
   \item manually \textbf{add} one or more files to include to commit them and describe what changed in a message;
-  \item a permanent record of what changed (\textbf{diff}), when, by whom, with respect to what (\textbf{parent commit}). Commits are uniquely identified by a SHA-1 code (eg, \texttt{a12b34\ldots});
+  \item a permanent record of what changed (\textbf{diff}), when, by whom, with respect to what (\textbf{parent commit});
   \item a repository is “just a directed acyclic graph of commits”.
 \end{itemize}
 \end{itemize}
@@ -263,14 +264,42 @@ Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{Stackoverflow}. 
 \begin{frame}
 \frametitle{History of the repo with \lstinline{git log}}
 
-\input{./figures/linear_history.fig}
+\lstinline{git log} (or the interface) shows the history of commits of the repo: \pause
 
+\begin{block}{Log of a solitary development workflow}
+\input{./figures/history_linear.fig}
+\end{block}
+\smallskip
+\pause
+Note:
+\begin{itemize}
+  \item Commits are uniquely identified by a SHA-1 hash (eg, \texttt{a12b34\ldots});
+  \item Commit messages can have two parts:
+  \begin{itemize}
+    \item short description ($\sim<50$~characters, above)
+    \item details after two line break (not shown);
+  \end{itemize}
+  \item \lstinline{HEAD} means “where your next commit would go” (pointer to branch);
+  \item \lstinline{Master} is the name of the main \textbf{branch}
+\end{itemize}
 \end{frame}
 
 
-%% Basics: 
-% branching
-% tag model versions, release
+\begin{frame}
+\frametitle{Branches}
+
+\textbf{Branches} are sequences of commits, which can trace an alternative history and versions of the code in yout repo.\\
+\begin{itemize}
+  \item There is always a \lstinline{Master} branch, containing the \emph{main}, \emph{baseline} version of the code.
+  \item Git makes creating and merging branches quick and easy: it's a great help to the worflow.
+  \item Other branches can be created from any commit to \emph{experiment}, \emph{implement new features}, \emph{keep diverging versions}.
+
+\end{itemize}
+\pause
+\input{./figures/history_branch.fig}
+
+\end{frame}
+
 
 % Workflow:
 % branching for features
