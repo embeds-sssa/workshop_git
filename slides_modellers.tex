@@ -19,13 +19,16 @@
 
 \lstset{%
   basicstyle=\ttfamily\color{mLightBrown},
-  upquote=true
+  upquote=true,
+  keywordstyle=\itshape\color{FireBrick},
+  alsoletter={<,>},
+  morekeywords={<user>,<project>,<file>,<SHA>}
 }
 
 \hypersetup{
 colorlinks=true,
 linkcolor=,
-urlcolor=mLightGreen
+urlcolor=Teal%mLightGreen
 }
 
 \graphicspath{{./figures/}}
@@ -39,12 +42,12 @@ urlcolor=mLightGreen
 % \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
 \title{Git better}
-\subtitle{Collaborative project management using \emph{Git} and \emph{Github}}
+\subtitle{Collaborative project management using \emph{Git} and \emph{GitHub}}
 \date{\today}
 
 \author{Matteo Sostero}
 \institute{Sant'Anna School of Advanced Studies}
-\date{\today\\ These slides: \url{https://bit.ly/SA_git}}
+\date{February 9, 2018} %\\ These slides: \url{http://matteosostero.com/files/slides_git.pdf}}
 % \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
 
 \begin{document}
@@ -56,9 +59,9 @@ urlcolor=mLightGreen
     
 These slides are a brief primer to Git, and how it can help your workflow.
 
-\bigskip
+%\bigskip
 
-\centerline{Find these slides at: \url{https://bit.ly/SA_git}}
+% \centerline{Find these slides at: \url{https://bit.ly/SA_git}}
 
 \bigskip
 \pause
@@ -66,7 +69,7 @@ These slides are a brief primer to Git, and how it can help your workflow.
 References:
 \begin{itemize}
   \item \href{https://www.atlassian.com/git/tutorials}{Atlassian tutorial}
-  \item \href{https://guides.github.com/}{Github guides}
+  \item \href{https://guides.github.com/}{GitHub guides}
   \item \href{http://ndpsoftware.com/git-cheatsheet.html}{Git cheatsheet}
   \item \href{https://git-scm.com/book/en/v2}{Git book}
 \end{itemize}
@@ -119,8 +122,8 @@ Git is a distributed version control system for tracking changes in files and co
 Advantages of Git:
 \begin{itemize}
   \item widely used, supported, documented;
-  \item online platforms: \href{https://github.com/}{Github}, \href{https://bitbucket.org/}{bitbucket}, \href{https://about.gitlab.com/}{Gitlab};
-  \item dektop interfaces: shell, \href{https://desktop.github.com/}{Github Desktop}, \href{https://www.sourcetreeapp.com/}{SourceTree}, \href{https://www.gitkraken.com/}{GitKraken};
+  \item online platforms: \href{https://github.com/}{GitHub}, \href{https://bitbucket.org/}{bitbucket}, \href{https://about.gitlab.com/}{GitLab};
+  \item dektop interfaces: shell, \href{https://desktop.github.com/}{GitHub Desktop}, \href{https://www.sourcetreeapp.com/}{SourceTree}, \href{https://www.gitkraken.com/}{GitKraken};
   \item integration in editors and IDEs: Emacs, Sublime Text, RStudio, XCode, Visual Studio, \ldots;
   \item distributed (asynchronous, offline) development;
   \item easy branching: eg, experimental branches for trying changes);
@@ -162,14 +165,14 @@ Requires some workflow changes (\hypertarget{style}{see details}):
 \item \textbf{repository} (\textbf{repo}): a collection of files and their history:
 \begin{itemize}
    \item where the code is kept: under a single root directory;
-   \item can be \textbf{local} (your machine), or distributed across your team or on a \textbf{remote} server (eg, Github).
+   \item can be \textbf{local} (your machine), or distributed across your team or on a \textbf{remote} server (eg, GitHub).
  \end{itemize}
 
 \item \textbf{commit}: a snapshot of your files at a given time:
 \begin{itemize}
   \item how Git keeps track of changes in code over time and across team;
-  \item manually \textbf{add} one or more files to include to commit them and describe what changed in a message;
-  \item a permanent record of what changed (\textbf{diff}), when, by whom, with respect to what (\textbf{parent commit});
+  \item manually \lstinline{add} one or more files to include to commit them and describe what changed in a message;
+  \item a permanent record of what changed (\lstinline{diff}), when, by whom, with respect to what (\textbf{parent commit});
   \item a repository is “just a directed acyclic graph of commits”.
 \end{itemize}
 \end{itemize}
@@ -430,7 +433,7 @@ Online hosting services like GitHub and Bitbucket provide:
 
 \begin{frame}
 \frametitle{Collaboration workflow on remote git repositories}
-The typical workflow within our Github \emph{organization} or Bitbucket \emph{team} would be:
+The typical workflow within our GitHub \emph{organization} or Bitbucket \emph{team} would be:
 \begin{enumerate}[<+->]
   \item create a (private/public) repository within the organization.
   \begin{itemize}
@@ -450,7 +453,7 @@ The typical workflow within our Github \emph{organization} or Bitbucket \emph{te
 
 
 
-\section{Style}
+\section{Coding with style}
 
 \begin{frame}
 \label{style}
@@ -478,42 +481,201 @@ Some matters of style and workflow to collaborate with ease.
 \end{frame}
 
 
-\section{Pricing plans}
+% \section{Pricing plans}
+
+% \begin{frame}
+% \frametitle{Organization pricing plans}
+
+% Git is free software, but extensive access to the cloud platform (GitHub, Bitbucket,\ldots) is paying for non-open-source projects.
+
+% \small
+
+% \begin{tabular}{llp{6cm}}
+% \multicolumn{3}{l}{\textbf{GitHub}}\\
+% \toprule
+% cloud       & \emph{Education}  & free for education, (max 10 repos)                       \\
+% cloud       & \emph{Team}       & from \$25/month (5 users) + \$9/user/month               \\
+% cloud       & \emph{Business}   & \$21 per user/month                                      \\
+% \midrule
+% self-hosted & \emph{Enterprise} & \$21 per user/month (by $\times$10 users, annual) \\
+% \bottomrule
+% \end{tabular}
+
+% \medskip
+
+% \begin{tabular}{lll}
+% \multicolumn{3}{l}{\textbf{Bitbucket}}\\
+% \toprule
+% cloud       & \emph{Standard} & \$10/month + \$2 per user/month \\
+% cloud       & \emph{Premium}  & \$25/month + \$5 user/month     \\
+% \midrule
+% self-hosted &                 & \$1800/year (25 users)          \\
+% self-hosted &                 & \$3300/year (50 users)          \\
+% \bottomrule
+% \end{tabular}
+% \end{frame}
+
+
+\section{Managing a single-user project locally and remotely on GitHub}
 
 \begin{frame}
-\frametitle{Organization pricing plans}
+\frametitle{Existing project: local and remote repo}
+Use case: an existing local project in \lstinline{/<project>/}, as yet untracked by git.
 
-Git is free software, but extensive access to the cloud platform (GitHub, Bitbucket,\ldots) is paying for non-open-source projects.
+\begin{block}{Workflow}
+\begin{itemize}
+  \item Initialise a git repo:
+  \begin{itemize}
+    \item \lstinline{cd ~/<project>/}
+    \item \lstinline{git init}
+  \end{itemize}
+  \item Create \lstinline{.gitignore} file, exclude irrelevant files.
+  \item Stage all (relevant) files: \lstinline{git add .}
+  \item \lstinline{git status} (is your friend)
+  \item Commit changes \lstinline{git commit -m "First commit (better late than never)"}
+\end{itemize}
+\end{block}
+\end{frame}
 
-\small
+\begin{frame}
+\frametitle{Existing project: local and remote repo (continued)}
 
-\begin{tabular}{llp{6cm}}
-\multicolumn{3}{l}{\textbf{GitHub}}\\
-\toprule
-cloud       & \emph{Education}  & free for education, (max 10 repos)                       \\
-cloud       & \emph{Team}       & from \$25/month (5 users) + \$9/user/month               \\
-cloud       & \emph{Business}   & \$21 per user/month                                      \\
-\midrule
-self-hosted & \emph{Enterprise} & \$21 per user/month (by $\times$10 users, annual) \\
-\bottomrule
-\end{tabular}
+\begin{block}{Workflow (continued)}
+\begin{itemize}
+  \item Create an \textbf{empty} remote repo called \lstinline{<project>} in GitHub:
+  \begin{itemize}
+    \item uncheck “Initialize this repository with a README”
+    \item no gitignore
+    \item no licence
+  \end{itemize}
+  (You can always add those later; should not commit at this time)
 
-\medskip
+  \item GitHub project now at \lstinline{https://github.com/<user>/<project>}; name need not be globally unique (GUID: \lstinline{<user>/<project>}),\\ but make it \textbf{memorable}, \textbf{evocative} and \textbf{google-able}.
 
-\begin{tabular}{lll}
-\multicolumn{3}{l}{\textbf{Bitbucket}}\\
-\toprule
-cloud       & \emph{Standard} & \$10/month + \$2 per user/month \\
-cloud       & \emph{Premium}  & \$25/month + \$5 user/month     \\
-\midrule
-self-hosted &                 & \$1800/year (25 users)          \\
-self-hosted &                 & \$3300/year (50 users)          \\
-\bottomrule
-\end{tabular}
+  \item Locally, add remote repo address called “origin”: \\ \lstinline{git remote add origin https://github.com/<user>/<project>.git}
+
+  \item Push changes for the first time (creates remote \lstinline{master} branch) :
+  \lstinline{git push -u origin master}
+\end{itemize}
+\end{block}
 \end{frame}
 
 
-\begin{frame}[standout]
+
+\section{Collaborating on team projects on GitHub}
+\begin{frame}
+\frametitle{Collaborating on a GitHub project}
+Use case: working with your team on \lstinline{github.com/<user>/<project>}.
+
+\begin{block}{Workflow}
+\begin{enumerate}[<+->]
+  \item Add collaborators from \lstinline{github.com/<user>/<project>/settings/collaboration};\\
+  they receive and accept invitations to work on the repo.
+  \item collaborators can access a private repository, clone repository locally and make changes;
+  \item collaborators can now push commits to repo, including \lstinline{master}!\\Protect it from foolishness in \lstinline{/settings/branches/} by requiring \textbf{branching} and \textbf{pull requests} in order to commit on \lstinline{master}:
+  \begin{itemize}
+    \item \textbf{collaborators}—branch $\rightarrow$ commit(s) $\rightarrow$ pull request;
+    \item \textbf{repo admin(s)}—evaluate pull requests.
+  \end{itemize}
+\end{enumerate}
+\end{block}
+\end{frame}
+
+
+\section{Undo (almost) anything with Git}
+\begin{frame}
+\frametitle{How to undo (almost) anything with Git}
+
+Git allows to undo most actions easily, depending on state of the repo.
+\pause
+\begin{block}{Golden rules}
+\begin{itemize}
+  \item \textit{Don't Panic!} Your code is still there (somewhere).
+  \item Working \hyperlink{style}{\textcolor{Teal}{methodically}} will prevent (most) mishaps.
+  \item Remote commits are there to stay—but you can revert their effects.
+\end{itemize} 
+\end{block}
+\pause
+See also:
+\begin{itemize}
+  \item GitHub's \href{https://github.com/blog/2019-how-to-undo-almost-anything-with-git}{\textit{How to undo (almost) anything with Git}};
+  \item StackOverflow (pro tip: there is usually $>1$ way to do it).
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{How to undo (almost) anything with Git: examples}
+Solutions to \textbf{local} (ie, not-yet-pushed) problems:
+\begin{itemize}[<+->]
+  \item Undo changes in \lstinline{<file>} made since last commit: return files to last commit with \lstinline{git checkout -- <file>};
+  \item Undo changes just committed (eg, typo in message or error in code): fix files, add them and commit again with \lstinline{--amend} option;
+  \item Stop tracking \lstinline{<file>}: \lstinline{git rm --cached <file>}; add it to \lstinline{.gitignore}; commit;
+  \item Undo changes in several recent commits: return to last good commit with \lstinline{git log}, look for \lstinline{<SHA>} of commit, then \lstinline{git reset <SHA>}
+\end{itemize}
+\medskip
+\pause
+Solutions to \textbf{public} (ie, pushed to remote) problems:
+\begin{itemize}
+  \item Undo a public commit \lstinline{<SHA>}: \lstinline{git revert <SHA>} will create a new commit, that undoes (inverts) the changes in introduced by \lstinline{<SHA>}; this new commit is added to existing (public) history.
+\end{itemize}
+
+\end{frame}
+
+
+\section{Contributing to third-party open-source projects on GitHub}
+\begin{frame}
+\frametitle{Contributing to third-party repositories on GitHub}
+GitHub hosts many great projects, mostly managed by volunteers. \\
+\medskip
+\pause
+Here's how you can help:
+\begin{itemize}[<+->]
+\item \textbf{report issues (bugs)}: 
+\begin{itemize}
+  \item \textbf{first, due diligence}: read documentation, search existing issues, repo Wiki, StackOverflow answers. Is your problem really new or general?
+  \item describe all the steps needed to reproduce; embed example code in Markdown (eg, \href{https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example}{R Minimal Reproducible Example});
+  \item give feedback on proposed solutions.
+\end{itemize}
+\item \textbf{fix issues}: if you can solve an existing issue, fork the repo, work on it, and submit a pull request.
+\item \textbf{documentation}: writing good documentation takes time, and developers may be happy to delegate. Ask how you can help.
+\item \textbf{say thanks}: volunteer development is a thankless task; reach out to thank to the developers on social media.
+\end{itemize}
+\end{frame}
+
+
+\section{Further topics}
+\begin{frame}
+\frametitle{Sharing snippets of code easily with Github Gists}
+Github Gists (\href{https://gist.github.com/}{gist.github.com}) are pages to store and share snippets of code. They are light-weight repositories, with an emphasis on showcasing the code itself, and making it easy to copy.\\
+\pause
+\begin{itemize}
+  \item great for sharing self-contained scripts or config files;
+  \item automatically highlight code and can embed it in third-party websites;
+  \item can be edited online by the author (automatic versioning);
+  \item either public (listed on your profile page, searchable) or private (access with link only);
+  \item can gather comments from everyone.
+\end{itemize}
+\end{frame}
+\begin{frame}
+
+
+\frametitle{References to advanced topics}
+Some useful topics covered in GitHub Guides (\href{https://guides.github.com/}{guides.github.com}):
+\begin{itemize}
+  \item \href{https://guides.github.com/features/mastering-markdown/}{Mastering Markdown}: all about GitHub-flavoured Markdown, the easiest mark-up language around—used extensively in GitHub READMEs, issues, comments, and around the web;
+  \item \href{https://guides.github.com/features/wikis/}{Documenting your projects on GitHub}: writing great documentation (README, Wiki, pages) for your repo (in Markdown);
+  \item \href{https://guides.github.com/activities/citable-code/}{
+Making Your Code Citable}: assign a \textsc{doi} (Digital Object Identifier) to cite your code in academic publication, using GitHub and \href{https://zenodo.org/}{Zenodo};
+  \item \href{https://guides.github.com/features/pages/}{Github Pages}: easily build a website from a GitHub repo—for your project or for yourself!
+\end{itemize}
+\end{frame}
+
+% \begin{frame}
+% \frametitle{Configuring Sublime Text for \LaTeX{} and Git}
+% \end{frame}
+
+
+\begin{frame}<handout:0>[standout]
 Thank you!
 \end{frame}
 
