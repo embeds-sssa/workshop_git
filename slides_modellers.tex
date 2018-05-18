@@ -1,6 +1,5 @@
 %!TEX program = xelatex
-\documentclass[10pt,svgnames]{beamer}
-
+\documentclass[10pt,svgnames,handout]{beamer}
 \PassOptionsToClass{svgnames}{xcolor}
 
 \usetheme[progressbar=frametitle]{metropolis}
@@ -12,11 +11,9 @@
 \usepackage{fontspec}
 \setmainfont{Linux Biolinum O}
 \setsansfont{Linux Biolinum O}
-\setmonofont{Inconsolata}[Scale=MatchLowercase]
+\setmonofont{Liberation Mono}[Scale=MatchLowercase]
+
 \usepackage{listings}
-
-\usepackage{gitdags}
-
 \lstset{%
   basicstyle=\ttfamily\color{mLightBrown},
   upquote=true,
@@ -26,10 +23,12 @@
 }
 
 \hypersetup{
-colorlinks=true,
-linkcolor=,
-urlcolor=Teal%mLightGreen
+  colorlinks=true,
+  linkcolor=,
+  urlcolor=Teal
 }
+
+\usepackage{gitdags}
 
 \graphicspath{{./figures/}}
 
@@ -46,7 +45,9 @@ urlcolor=Teal%mLightGreen
 \date{\today}
 
 \author{Matteo Sostero}
-\institute{Sant'Anna School of Advanced Studies}
+\institute{
+Workshop @ Modellers Group\\
+Sant'Anna School of Advanced Studies}
 \date{February 9, 2018} %\\ These slides: \url{http://matteosostero.com/files/slides_git.pdf}}
 % \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
 
@@ -82,9 +83,10 @@ Troubleshooting:
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Table of contents}
+\begin{frame}{Overview}
 \setbeamertemplate{section in toc}[sections numbered]
 \tableofcontents[hideallsubsections]
+\vfill
 \end{frame}
 
 
@@ -122,7 +124,7 @@ Git is a distributed version control system for tracking changes in files and co
 Advantages of Git:
 \begin{itemize}
   \item widely used, supported, documented;
-  \item online platforms: \href{https://github.com/}{GitHub}, \href{https://bitbucket.org/}{bitbucket}, \href{https://about.gitlab.com/}{GitLab};
+  \item online platforms: \href{https://github.com/}{GitHub}, \href{https://bitbucket.org/}{Bitbucket}, \href{https://about.gitlab.com/}{GitLab};
   \item dektop interfaces: shell, \href{https://desktop.github.com/}{GitHub Desktop}, \href{https://www.sourcetreeapp.com/}{SourceTree}, \href{https://www.gitkraken.com/}{GitKraken};
   \item integration in editors and IDEs: Emacs, Sublime Text, RStudio, XCode, Visual Studio, \ldots;
   \item distributed (asynchronous, offline) development;
@@ -147,7 +149,7 @@ Challenges:
 \medskip
 \pause 
 
-Requires some workflow changes (\hypertarget{style}{see details}):
+Requires some workflow changes (\hyperlink{style}{see details}):
 \begin{itemize}
   \item keep project under single directory (\emph{outside} Dropbox, Google Drive, piCloud, \ldots!)
   \item consistency in personal and team coding style (eg, indentation, spacing, line-breaking);
@@ -240,8 +242,8 @@ Git has a sophisticated model of \emph{where} things happen, based on how freque
 \begin{block}{Solitary development, offline, from scratch}
     
 \begin{enumerate}
-  \item Create a new empty directory on your computer
-  \item \lstinline|git init|: create a git repository in the directory
+  \item create a new empty directory on your computer
+  \item \lstinline|git init|: create a Git repository in the directory
   \item create, edit, and save some \texttt{file.txt} in the directory
   \item \lstinline|git status| shows the file is untracked
   \item \lstinline|git add file.txt| to stage the file
@@ -278,8 +280,8 @@ Adapted from \href{https://tex.stackexchange.com/a/70332/14260}{Stackoverflow}. 
 \pause
 Note:
 \begin{itemize}
-  \item Commits are uniquely identified by a SHA-1 hash (eg, \texttt{a12b34\ldots});
-  \item Commit messages can have two parts:
+  \item commits are uniquely identified by a SHA-1 hash (eg, \texttt{a12b34\ldots});
+  \item commit messages can have two parts:
   \begin{itemize}
     \item short description ($\sim<50$~characters, above)
     \item details after two line break (not shown);
@@ -295,9 +297,9 @@ Note:
 
 \textbf{Branches} are sequences of commits, which can trace an alternative history and versions of the code in yout repo.\\
 \begin{itemize}
-  \item There is always a \lstinline{Master} branch, containing the \emph{main}, \emph{baseline} version of the code.
+  \item there is always a \lstinline{Master} branch, containing the \emph{main}, \emph{baseline} version of the code.
   \item Git makes creating and merging branches quick and easy: it's a great help to the worflow.
-  \item Other branches can be created from any commit to \emph{experiment}, \emph{implement new features}, \emph{keep diverging versions}.
+  \item other branches can be created from any commit to \emph{experiment}, \emph{implement new features}, \emph{keep diverging versions}.
 \end{itemize}
 \pause
 
@@ -427,7 +429,7 @@ Online hosting services like GitHub and Bitbucket provide:
 \pause
 
 \begin{center}
-\includegraphics[width=0.5\linewidth]{github_poster.jpg}
+\includegraphics[width=0.5\linewidth]{GitHub_poster.jpg}
 \end{center}
 \end{frame}
 
@@ -437,8 +439,8 @@ The typical workflow within our GitHub \emph{organization} or Bitbucket \emph{te
 \begin{enumerate}[<+->]
   \item create a (private/public) repository within the organization.
   \begin{itemize}
-    \item Invite collaborators among modelers;
-    \item Nominate administrators, maintainers, access rights, etc.
+    \item invite collaborators among modelers;
+    \item nominate administrators, maintainers, access rights, etc.
   \end{itemize}
   \item upload (or migrate) existing code on the repository;
   \item other modelers clone repository on their machine, replicate and experiment;
@@ -466,11 +468,11 @@ Some matters of style and workflow to collaborate with ease.
 \begin{itemize}
   \item include \textbf{all} relevant files in the repo (libraries, dependencies, \ldots);
   \item in your code, refer to dependencies using relative paths: \lstinline{./library/}, \textbf{not} \lstinline{/home/user/project_name/library};
-  \item exclude unnecessary files (eg, compilation artifacts, large data, useless binary files) using \texttt{.gitignore} (see \href{https://github.com/github/gitignore}{github.com/github/gitignore}).
+  \item exclude unnecessary files (eg, compilation artifacts, large data, useless binary files) using \texttt{.gitignore} (see \href{https://github.com/GitHub/gitignore}{github.com/GitHub/gitignore}).
   \item keep it \textbf{outside} shared folders of Dropbox, Google Drive, piCloud!
 \end{itemize}
 \item be \textbf{consistent} in personal and team coding style: indentation/tabs, spacing, character encoding (UTF-8), line-breaking.
-\item conform to a language \textbf{style guide} (eg, \href{https://google.github.io/styleguide/}{google.github.io/styleguide/});
+\item conform to a language \textbf{style guide} (eg, \href{https://google.GitHub.io/styleguide/}{google.GitHub.io/styleguide/});
 \item \textbf{commit early and often};
 \item \textbf{never commit broken code}! use \href{https://git-scm.com/book/it/v2/Git-Tools-Stashing-and-Cleaning}{\lstinline{git stash}} to save it instead.
 \item commit related files together;
@@ -524,15 +526,15 @@ Use case: an existing local project in \lstinline{/<project>/}, as yet untracked
 
 \begin{block}{Workflow}
 \begin{itemize}
-  \item Initialise a git repo:
+  \item initialise a git repo:
   \begin{itemize}
-    \item \lstinline{cd ~/<project>/}
+    \item \lstinline{cd <project>/}
     \item \lstinline{git init}
   \end{itemize}
-  \item Create \lstinline{.gitignore} file, exclude irrelevant files.
-  \item Stage all (relevant) files: \lstinline{git add .}
+  \item create \lstinline{.gitignore} file, exclude irrelevant files.
+  \item stage all (relevant) files: \lstinline{git add .}
   \item \lstinline{git status} (is your friend)
-  \item Commit changes \lstinline{git commit -m "First commit (better late than never)"}
+  \item commit changes \lstinline{git commit -m "First commit (better late than never)"}
 \end{itemize}
 \end{block}
 \end{frame}
@@ -542,7 +544,7 @@ Use case: an existing local project in \lstinline{/<project>/}, as yet untracked
 
 \begin{block}{Workflow (continued)}
 \begin{itemize}
-  \item Create an \textbf{empty} remote repo called \lstinline{<project>} in GitHub:
+  \item create an \textbf{empty} remote repo called \lstinline{<project>} in GitHub:
   \begin{itemize}
     \item uncheck “Initialize this repository with a README”
     \item no gitignore
@@ -552,9 +554,9 @@ Use case: an existing local project in \lstinline{/<project>/}, as yet untracked
 
   \item GitHub project now at \lstinline{https://github.com/<user>/<project>}; name need not be globally unique (GUID: \lstinline{<user>/<project>}),\\ but make it \textbf{memorable}, \textbf{evocative} and \textbf{google-able}.
 
-  \item Locally, add remote repo address called “origin”: \\ \lstinline{git remote add origin https://github.com/<user>/<project>.git}
+  \item locally, add remote repo address called “origin”: \\ {\small \lstinline{git remote add origin https://github.com/<user>/<project>.git}}
 
-  \item Push changes for the first time (creates remote \lstinline{master} branch) :
+  \item push changes for the first time (creates remote \lstinline{master} branch) :
   \lstinline{git push -u origin master}
 \end{itemize}
 \end{block}
@@ -569,7 +571,7 @@ Use case: working with your team on \lstinline{github.com/<user>/<project>}.
 
 \begin{block}{Workflow}
 \begin{enumerate}[<+->]
-  \item Add collaborators from \lstinline{github.com/<user>/<project>/settings/collaboration};\\
+  \item add collaborators from \lstinline{github.com/<user>/<project>/settings/collaboration};\\
   they receive and accept invitations to work on the repo.
   \item collaborators can access a private repository, clone repository locally and make changes;
   \item collaborators can now push commits to repo, including \lstinline{master}!\\Protect it from foolishness in \lstinline{/settings/branches/} by requiring \textbf{branching} and \textbf{pull requests} in order to commit on \lstinline{master}:
@@ -591,15 +593,15 @@ Git allows to undo most actions easily, depending on state of the repo.
 \begin{block}{Golden rules}
 \begin{itemize}
   \item \textit{Don't Panic!} Your code is still there (somewhere).
-  \item Working \hyperlink{style}{\textcolor{Teal}{methodically}} will prevent (most) mishaps.
-  \item Remote commits are there to stay—but you can revert their effects.
+  \item working \hyperlink{style}{\textcolor{Teal}{methodically}} will prevent (most) mishaps.
+  \item remote commits are there to stay—but you can revert their effects.
 \end{itemize} 
 \end{block}
 \pause
 See also:
 \begin{itemize}
   \item GitHub's \href{https://github.com/blog/2019-how-to-undo-almost-anything-with-git}{\textit{How to undo (almost) anything with Git}};
-  \item StackOverflow (pro tip: there is usually $>1$ way to do it).
+  \item \href{https://stackoverflow.com/questions/tagged/git}{Stack Overflow} (pro tip: there is usually $>1$ way to do it).
 \end{itemize}
 \end{frame}
 
@@ -607,16 +609,16 @@ See also:
 \frametitle{How to undo (almost) anything with Git: examples}
 Solutions to \textbf{local} (ie, not-yet-pushed) problems:
 \begin{itemize}[<+->]
-  \item Undo changes in \lstinline{<file>} made since last commit: return files to last commit with \lstinline{git checkout -- <file>};
-  \item Undo changes just committed (eg, typo in message or error in code): fix files, add them and commit again with \lstinline{--amend} option;
-  \item Stop tracking \lstinline{<file>}: \lstinline{git rm --cached <file>}; add it to \lstinline{.gitignore}; commit;
-  \item Undo changes in several recent commits: return to last good commit with \lstinline{git log}, look for \lstinline{<SHA>} of commit, then \lstinline{git reset <SHA>}
+  \item undo changes in \lstinline{<file>} made since last commit: return files to last commit with \lstinline{git checkout -- <file>};
+  \item undo changes just committed (eg, typo in message or error in code): fix files, add them and commit again with \lstinline{--amend} option;
+  \item stop tracking \lstinline{<file>}: \lstinline{git rm --cached <file>}; add it to \lstinline{.gitignore}; commit;
+  \item undo changes in several recent commits: return to last good commit with \lstinline{git log}, look for \lstinline{<SHA>} of commit, then \lstinline{git reset <SHA>}
 \end{itemize}
 \medskip
 \pause
 Solutions to \textbf{public} (ie, pushed to remote) problems:
 \begin{itemize}
-  \item Undo a public commit \lstinline{<SHA>}: \lstinline{git revert <SHA>} will create a new commit, that undoes (inverts) the changes in introduced by \lstinline{<SHA>}; this new commit is added to existing (public) history.
+  \item undo a public commit \lstinline{<SHA>}: \lstinline{git revert <SHA>} will create a new commit, that undoes (inverts) the changes in introduced by \lstinline{<SHA>}; this new commit is added to existing (public) history.
 \end{itemize}
 
 \end{frame}
@@ -645,8 +647,8 @@ Here's how you can help:
 
 \section{Further topics}
 \begin{frame}
-\frametitle{Sharing snippets of code easily with Github Gists}
-Github Gists (\href{https://gist.github.com/}{gist.github.com}) are pages to store and share snippets of code. They are light-weight repositories, with an emphasis on showcasing the code itself, and making it easy to copy.\\
+\frametitle{Sharing snippets of code easily with GitHub Gists}
+GitHub Gists (\href{https://gist.github.com/}{gist.github.com}) are pages to store and share snippets of code. They are light-weight repositories, with an emphasis on showcasing the code itself, and making it easy to copy.\\
 \pause
 \begin{itemize}
   \item great for sharing self-contained scripts or config files;
@@ -666,7 +668,7 @@ Some useful topics covered in GitHub Guides (\href{https://guides.github.com/}{g
   \item \href{https://guides.github.com/features/wikis/}{Documenting your projects on GitHub}: writing great documentation (README, Wiki, pages) for your repo (in Markdown);
   \item \href{https://guides.github.com/activities/citable-code/}{
 Making Your Code Citable}: assign a \textsc{doi} (Digital Object Identifier) to cite your code in academic publication, using GitHub and \href{https://zenodo.org/}{Zenodo};
-  \item \href{https://guides.github.com/features/pages/}{Github Pages}: easily build a website from a GitHub repo—for your project or for yourself!
+  \item \href{https://guides.github.com/features/pages/}{GitHub Pages}: easily build a website from a GitHub repo—for your project or for yourself!
 \end{itemize}
 \end{frame}
 
