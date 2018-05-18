@@ -2,7 +2,7 @@
 
 This repository contains the [slides](https://github.com/CoMoS-SA/modellers-SA/blob/master/slides_modellers.pdf) for the turorials on *git* and *GitHub* for the [*Computational Modellers Society*](https://www.santannapisa.it/it/istituto/economia/complexity-modellers-society-comos) at [Sant'Anna School of Advanced Studies](https://www.santannapisa.it/it/istituto/economia/complexity-modellers-society-comos).
 
-![poster](https://images.pexels.com/photos/6224/hands-people-woman-working.jpg)
+![poster](https://images.pexels.com/photos/6224/hands-people-woman-working.jpg?cs=srgb&dl=brainstorming-collaborate-collaboration-6224.jpg&fm=jpg)
 
 
 ## Permission levels
