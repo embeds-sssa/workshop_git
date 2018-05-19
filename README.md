@@ -4,6 +4,28 @@ This repository contains the [slides](https://github.com/CoMoS-SA/modellers-SA/b
 
 ![poster](https://images.pexels.com/photos/6224/hands-people-woman-working.jpg?cs=srgb&dl=brainstorming-collaborate-collaboration-6224.jpg&fm=jpg)
 
+## References
+
+Tutorials and guides:
+* [Atlassian tutorial](https://www.atlassian.com/git/tutorials)
+* [GitHub guides](https://guides.github.com/)
+* [Git cheatsheet](http://ndpsoftware.com/git-cheatsheet.html)
+* [Git book](https://git-scm.com/book/en/v2)
+* [How to undo (almost) anything with Git](https://github.com/blog/2019-how-to-undo-almost-anything-with-git)
+* [Git flight rules](https://github.com/k88hudson/git-flight-rules/blob/master/README.md)
+
+## Software
+
+Download [git](https://git-scm.com/downloads).
+
+Graphical interfaces:
+
+|                     Client                    |        Win         |        Mac         |       Linux        |
+| --------------------------------------------- | ------------------ | ------------------ | ------------------ |
+| [GitHub Desktop](https://desktop.github.com/) | :heavy_check_mark: | :heavy_check_mark: |                    |
+| [SourceTree](https://www.sourcetreeapp.com/)  | :heavy_check_mark: | :heavy_check_mark: |                    |
+| [GitKraken](https://www.gitkraken.com/)       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+
 
 ## Permission levels
 
