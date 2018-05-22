@@ -29,21 +29,32 @@ Graphical interfaces:
 
 ## Permission levels
 
-|      **Public repositories**       |     Repo admin     |    Repo collab     |     Org member     |     Org owner      | Other GitHub users |
-| ---------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| Create, delete, transfer repo      | :heavy_check_mark: |                    | :heavy_check_mark: | :heavy_check_mark: |                    |
-| Read repo contents                 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Push (write) to repo               | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |
-| Push (write) to repo master branch | :heavy_check_mark: | per repo           |                    |                    |                    |
-| Fork (copy) repo                   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Submit Pull Request                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+Entities:
+* *Repository administrator*: manages a repository within CoMoS (recommended one per repo);
+* *Repository collaborators*: contribute to a given repository (needn't be organisation members);
+* *Organisation members*: all CoMoS members [who have been invited](https://github.com/orgs/CoMoS-SA/people);
+* *Organisation owners*: [Francesco Lamperti](https://github.com/orgs/CoMoS-SA/people/flamperti) and [Matteo Sostero](https://github.com/orgs/CoMoS-SA/people/m-sostero).
+* *Other :octocat: users*: everyone else on GitHub
 
-|      **Private repositories**      |     Repo admin     |    Repo collab     |     Org member     |     Org owner      | Other GitHub users |
-| ---------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| Create, delete, transfer repo      | :heavy_check_mark: |                    | :heavy_check_mark: | :heavy_check_mark: |                    |
-| Read repo contents                 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                    |
-| Push (write) to repo               | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |
-| Push (write) to repo master branch | :heavy_check_mark: | per repo           |                    |                    |                    |
-| Fork (copy) repo                   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                    |
-| Submit Pull Request                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                    |
+Permission levels for CoMoS-SA for *public* or *private* currently set as follows:
+
+|            public repo             |     repo admin     |    repo collab     |     org member     |     org owners     | other :octocat: users |
+| ---------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | --------------------- |
+| Create repo, invite collab         |                    |                    | :heavy_check_mark: | :heavy_check_mark: |                       |
+| Delete/transfer repo, take private | :heavy_check_mark: |                    |                    | :heavy_check_mark: |                       |
+| Read repo contents                 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:    |
+| Push (write) to repo               | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                       |
+| Push (write) to repo master branch | :heavy_check_mark: | per repo           |                    |                    |                       |
+| Fork (copy) repo                   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:    |
+| Submit Pull Request                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:    |
+
+|            private repo            |     repo admin     |    repo collab     |     org member     |     org owner      | other :octocat: users |
+| ---------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | --------------------- |
+| Create repo, invite collab         |                    |                    | :heavy_check_mark: | :heavy_check_mark: |                       |
+| Delete/transfer repo, take public  | :heavy_check_mark: |                    |                    | :heavy_check_mark: |                       |
+| Read repo contents                 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                       |
+| Push (write) to repo               | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                       |
+| Push (write) to repo master branch | :heavy_check_mark: | per repo           |                    |                    |                       |
+| Fork (copy) repo                   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                       |
+| Submit Pull Request                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                       |
 
